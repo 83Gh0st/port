@@ -11,7 +11,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Make a commit
+    - name: Make a commit with 21f3001166@ds.study.iitm.ac.in
       run: |
         echo "Daily commit by 21f3001166@ds.study.iitm.ac.in" >> daily-commit.txt
         git config --global user.email "21f3001166@ds.study.iitm.ac.in"
