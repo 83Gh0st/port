@@ -7,6 +7,7 @@ on:
 jobs:
   commit_job:
     runs-on: ubuntu-latest
+    name: Commit by 21f3001166@ds.study.iitm.ac.in  # Including the email here
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
