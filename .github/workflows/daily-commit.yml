@@ -1,4 +1,4 @@
-name: Daily Commit Workflow  # Ensure workflow has a generic name
+name: Daily Commit Workflow by 21f3001166@ds.study.iitm.ac.in  # Workflow name with email
 
 on:
   schedule:
@@ -7,16 +7,17 @@ on:
 jobs:
   commit_job:
     runs-on: ubuntu-latest
-    name: Commit job by 21f3001166@ds.study.iitm.ac.in  # This step name will include the email correctly
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    name: Commit job by 21f3001166@ds.study.iitm.ac.in  # Job name with email
 
-    - name: Make a commit with 21f3001166@ds.study.iitm.ac.in
-      run: |
-        echo "Daily commit by 21f3001166@ds.study.iitm.ac.in" >> daily-commit.txt
-        git config --global user.email "21f3001166@ds.study.iitm.ac.in"
-        git config --global user.name "GitHub Actions"
-        git add daily-commit.txt
-        git commit -m "Daily commit by 21f3001166@ds.study.iitm.ac.in"
-        git push
+    steps:
+      - name: Checkout code by 21f3001166@ds.study.iitm.ac.in  # Checkout step with email
+        uses: actions/checkout@v2
+
+      - name: Commit by 21f3001166@ds.study.iitm.ac.in - Make the daily commit  # Commit step with email
+        run: |
+          echo "Daily commit by 21f3001166@ds.study.iitm.ac.in" >> daily-commit.txt
+          git config --global user.email "21f3001166@ds.study.iitm.ac.in"
+          git config --global user.name "GitHub Actions"
+          git add daily-commit.txt
+          git commit -m "Daily commit by 21f3001166@ds.study.iitm.ac.in"
+          git push
