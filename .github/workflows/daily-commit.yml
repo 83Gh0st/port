@@ -1,4 +1,4 @@
-name: Daily Commit by 21f3001166@ds.study.iitm.ac.in  # Ensure email is in workflow name
+name: Daily Commit Workflow  # Ensure workflow has a generic name
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
 jobs:
   commit_job:
     runs-on: ubuntu-latest
-    name: Commit job by 21f3001166@ds.study.iitm.ac.in  # Ensure email is in job name
+    name: Commit job by 21f3001166@ds.study.iitm.ac.in  # This step name will include the email correctly
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
