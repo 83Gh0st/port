@@ -1,23 +1,32 @@
-name: Daily Commit Workflow - 21f3001166@ds.study.iitm.ac.in  # Workflow name with email
+name: Scrape IMDb Top 250 - 21f3001166@ds.study.iitm.ac.in  # Workflow name with your email
 
 on:
   schedule:
-    - cron: '0 12 * * *'  # This will run daily at 12:00 PM UTC
+    # Runs at 00:00 UTC every day
+    - cron: "0 0 * * *"
+  workflow_dispatch: # Allow manual triggers
 
 jobs:
-  commit_job:
+  scrape-imdb:
     runs-on: ubuntu-latest
-    name: Commit job by 21f3001166@ds.study.iitm.ac.in  # Job name with email
+    permissions:
+      contents: write
 
     steps:
-      - name: Checkout code by 21f3001166@ds.study.iitm.ac.in  # Checkout step with email
-        uses: actions/checkout@v2
+      - name: Checkout repository by 21f3001166@ds.study.iitm.ac.in  # Checkout step with email
+        uses: actions/checkout@v4
 
-      - name: Commit changes by 21f3001166@ds.study.iitm.ac.in  # Commit step with email
+      - name: Install uv by 21f3001166@ds.study.iitm.ac.in  # Install step with email
+        uses: astral-sh/setup-uv@v5
+
+      - name: Run scraper by 21f3001166@ds.study.iitm.ac.in  # Run scraper step with email
         run: |
-          echo "Daily commit by 21f3001166@ds.study.iitm.ac.in" >> daily-commit.txt
-          git config --global user.email "21f3001166@ds.study.iitm.ac.in"
-          git config --global user.name "GitHub Actions"
-          git add daily-commit.txt
-          git commit -m "Daily commit by 21f3001166@ds.study.iitm.ac.in"  # Commit message with email
+          uv run --with httpx,lxml,cssselect python scrape.py
+
+      - name: Commit and push changes by 21f3001166@ds.study.iitm.ac.in  # Commit step with email
+        run: |
+          git config --local user.email "21f3001166@ds.study.iitm.ac.in"
+          git config --local user.name "github-actions[bot]"
+          git add *.json
+          git commit -m "Update IMDb Top 250 data by 21f3001166@ds.study.iitm.ac.in [skip ci]" || exit 0
           git push
