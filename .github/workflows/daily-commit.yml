@@ -1,4 +1,4 @@
-name: Scrape IMDb Top 250 - 21f3001166@ds.study.iitm.ac.in  # Workflow name
+name: Scrape IMDb Top 250 - 21f3001166@ds.study.iitm.ac.in  # Workflow name with email
 
 on:
   schedule:
@@ -13,18 +13,19 @@ jobs:
       contents: write
     name: Scrape IMDb - 21f3001166@ds.study.iitm.ac.in  # Job name with email
 
-    steps:
-      - name: Checkout repository by 21f3001166@ds.study.iitm.ac.in  # Checkout step
-        uses: actions/checkout@v4
-
-      - name: Install uv by 21f3001166@ds.study.iitm.ac.in  # Install uv step
-        uses: astral-sh/setup-uv@v5
-
-      - name: Run scraper by 21f3001166@ds.study.iitm.ac.in  # Run scraper step
+    steps:  # This needs to be plural as it's for multiple steps
+      - name: Checkout repository and Install uv and Run scraper - 21f3001166@ds.study.iitm.ac.in  # Single step with email
         run: |
+          # Checkout the repository
+          git checkout main
+          
+          # Install uv
+          curl -sSL https://get.uv.sh | bash
+          
+          # Run the scraper
           uv run --with httpx,lxml,cssselect python scrape.py
 
-      - name: Commit and push changes by 21f3001166@ds.study.iitm.ac.in  # Commit step with email
+      - name: Commit and push changes - 21f3001166@ds.study.iitm.ac.in  # Commit step with email in name
         run: |
           git config --local user.email "21f3001166@ds.study.iitm.ac.in"
           git config --local user.name "github-actions[bot]"
